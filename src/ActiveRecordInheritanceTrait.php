@@ -191,10 +191,7 @@ trait ActiveRecordInheritanceTrait {
      * @return array attribute values (name => value).
      */
     public function getAttributes($names = null, $except = array()) {
-        if ($names === null) {
-            $names = array_merge($this->_parent()->attributes(), $this->attributes());
-        }
-        return parent::getAttributes($names, $except);
+        return array_merge($this->_parent()->getAttributes($names, $except), parent::getAttributes($names, $except));
     }
 
     /**
